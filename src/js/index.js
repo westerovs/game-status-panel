@@ -75,9 +75,18 @@ class StatusPanel {
         light.style.position = 'absolute'
         light.style.top = `${ skeletonPosY }px`
         light.style.left = `${ skeletonPosX }px`
+    
 
         this.VisibleItems.light--
+
+        // если молний 0, но есть 2 жизни, то всё равно считать это победой
+        if (this.VisibleItems.light === 0 && this.VisibleItems.life === 2) {
+            this.createWinScreen()
+            return
+        }
+    
         this.VisibleItems.life--
+    
         this.update()
     }
     
