@@ -3,10 +3,11 @@ import AbstractObserver from '../utils/abstract-observer.js'
 class StatusPanel {
     constructor() {
         this.VisibleItems = {
-            light: 2,
-            life: 2
+            light: 3,
+            life: 0
         }
-    
+        
+        // this.observer = new AbstractObserver()
         this.game = document.querySelector('.game')
         this.lights = this.game.querySelectorAll('.game__panel-light')
         this.life = this.game.querySelectorAll('.game__panel-life')
@@ -14,20 +15,30 @@ class StatusPanel {
         this.btnLife = this.game.querySelector('.game-btn--life')
     }
     
-    init() {
-        this.updateVisibleItems(this.lights, this.VisibleItems.light)
-        this.updateVisibleItems(this.life, this.VisibleItems.life)
-        this.showTextStatus()
+    init = () => {
+        this.update()
         this.addedHandlers()
     }
     
-    update() {
-    
+    update = () => {
+        if (this.VisibleItems.life <= 0) {
+            this.VisibleItems.life = 0
+        }
+
+        this.updateVisibleItems(this.lights, this.VisibleItems.light)
+        this.updateVisibleItems(this.life, this.VisibleItems.life)
+        this.showTextStatus()
+        this.createWinScreen()
     }
     
-    addedHandlers() {
+    addedHandlers = () => {
         this.btnLight.addEventListener('click', this.onHandlerLightBtn)
         this.btnLife.addEventListener('click', this.onHandlerLifeBtn)
+    }
+    
+    removeHandlers = () => {
+        this.btnLight.removeEventListener('click', this.onHandlerLightBtn)
+        this.btnLife.removeEventListener('click', this.onHandlerLifeBtn)
     }
     
     showTextStatus = () => {
@@ -39,38 +50,42 @@ class StatusPanel {
     }
     
     updateVisibleItems = (element, currentVisibleElements) => {
-        element
-          .forEach((item, index) => {
-              if (index < currentVisibleElements) {
-                  item.style.opacity = '1'
-              }
-          })
+        element.forEach((item, index) => {
+            if (index < currentVisibleElements) {
+                item.style.opacity = '1'
+            } else {
+                item.style.opacity = '0'
+            }
+        })
     }
     
     onHandlerLightBtn = () => {
         this.VisibleItems.light--
-        this.showTextStatus()
-        this.createWinScreen()
+        this.VisibleItems.life--
+        this.update()
     }
     
     onHandlerLifeBtn = () => {
         this.VisibleItems.life++
-        this.showTextStatus()
-        this.createWinScreen()
+        this.update()
     }
     
     createWinScreen = () => {
         let textVictory = document.querySelector('.game__victory')
+        
         if (this.VisibleItems.light === 0 && this.VisibleItems.life === 2) {
             textVictory.innerHTML = 'CONGRATULATIONS YOU WIN!'
+            this.removeHandlers()
             return
         }
         if (this.VisibleItems.light === 0) {
             textVictory.innerHTML = 'GAME FAIL!'
+            this.removeHandlers()
             return
         }
         if (this.VisibleItems.life === 3) {
             textVictory.innerHTML = 'CONGRATULATIONS YOU WIN!'
+            this.removeHandlers()
             return
         }
 
