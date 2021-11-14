@@ -49,7 +49,7 @@ img {
     overflow: hidden !important;
 }
 
-.wrapper {
+.game {
     position: relative;
     display: flex;
     justify-content: space-between;
@@ -57,7 +57,7 @@ img {
     width: 490px;
 }
 
-.panel {
+.game__panel {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -68,7 +68,7 @@ img {
     border-radius: 40px;
 }
 
-.status-panel {
+.game__text-panel {
     position: absolute;
     top: -40px;
     display: flex;
@@ -78,6 +78,6 @@ img {
     font-size: 20px;
 }
 
-.status-panel span {
+.game__text-panel span {
     color: red;
 }

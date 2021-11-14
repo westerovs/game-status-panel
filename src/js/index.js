@@ -5,14 +5,14 @@ class StatusPanel {
             life: 2
         }
     
-        this.lights = document.querySelectorAll('.panel__light')
+        this.lights = document.querySelectorAll('.game__panel-light')
         this.life = document.querySelectorAll('.panel__life')
     }
     
     
     showTextStatus = () => {
-        const spanLife = document.querySelector('.status__life')
-        const spanLight = document.querySelector('.status__light')
+        const spanLife = document.querySelector('.game__text-life')
+        const spanLight = document.querySelector('.game__text-light')
         
         spanLife.innerHTML = this.VisibleItems.life
         spanLight.innerHTML = this.VisibleItems.lights
