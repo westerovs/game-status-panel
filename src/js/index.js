@@ -1,3 +1,5 @@
+import AbstractObserver from '../utils/abstract-observer.js'
+
 class StatusPanel {
     constructor() {
         this.VisibleItems = {
