@@ -190,7 +190,8 @@ img {
 
 body.win .game__row,
 body.fail .game__row {
-    display: none !important;
+    opacity: 0;
+    pointer-events: none;
 }
 
 .game__controls {
