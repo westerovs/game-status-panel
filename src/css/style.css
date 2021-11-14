@@ -57,6 +57,8 @@ img {
     margin: 150px auto 0;
     width: 490px;
     padding: 10px;
+    background-color: inherit;
+    transition: background-color 1s;
     outline: 2px solid black;
 }
 
@@ -171,6 +173,14 @@ img {
     animation-duration: 4s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
+}
+
+.strikeLight {
+    background-color: red;
+}
+
+.strikeLife {
+    background-color: greenyellow;
 }
 
 @keyframes flash {

@@ -71,13 +71,16 @@ class StatusPanel {
         const skeletonPosX = this.skeleton.getBoundingClientRect().x -  this.game.getBoundingClientRect().x
         const skeletonPosY = this.skeleton.getBoundingClientRect().y -  this.game.getBoundingClientRect().y
 
+        this.game.classList.add('strikeLight')
+        setTimeout(() => {
+            this.game.classList.remove('strikeLight')
+        }, 200)
+        
         light.style.position = 'absolute'
         light.style.top = `${ skeletonPosY }px`
         light.style.left = `${ skeletonPosX }px`
     
-
         this.VisibleItems.light--
-
         // если молний 0, но есть 2 жизни, то всё равно считать это победой
         if (this.VisibleItems.light === 0 && this.VisibleItems.life === 2) {
             this.createWinScreen()
@@ -85,11 +88,15 @@ class StatusPanel {
         }
     
         this.VisibleItems.life--
-    
         this.update()
     }
     
     onHandlerLifeBtn = () => {
+        this.game.classList.add('strikeLife')
+        setTimeout(() => {
+            this.game.classList.remove('strikeLife')
+        }, 200)
+    
         this.VisibleItems.life++
         this.update()
     }
@@ -117,7 +124,6 @@ class StatusPanel {
             textVictory.style.display = 'block'
             this.removeHandlers()
             document.body.classList.add('win')
-            return
         }
 
     }
