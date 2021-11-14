@@ -1,5 +1,5 @@
 # TEMPLATE
 🟢RUN:<br>
-https://westerovs.github.com
+https://westerovs.github.io/game-status-panel/
 <br>
 <img src="cover.png">
