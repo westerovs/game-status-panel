@@ -188,6 +188,11 @@ img {
     background-image: linear-gradient(10deg, black, tomato);
 }
 
+body.win .game__row,
+body.fail .game__row {
+    display: none !important;
+}
+
 .game__controls {
     width: 100%;
     text-align: center;

@@ -29,7 +29,8 @@ class StatusPanel {
         if (this.VisibleItems.life <= 0) {
             this.VisibleItems.life = 0
         }
-
+    
+        this.updateTextStatus()
         this.updateVisibleItems(this.lights, this.VisibleItems.light)
         this.updateVisibleItems(this.life, this.VisibleItems.life)
         this.createWinScreen()
@@ -50,7 +51,7 @@ class StatusPanel {
         this.btnLife.removeEventListener('click', this.onHandlerLifeBtn)
     }
     
-    showTextStatus = () => {
+    updateTextStatus = () => {
         const spanLife = document.querySelector('.game__text-life')
         const spanLight = document.querySelector('.game__text-light')
         
@@ -88,6 +89,8 @@ class StatusPanel {
         // если молний 0, но есть 2 жизни, то всё равно считать это победой
         if (this.VisibleItems.light === 0 && this.VisibleItems.life === 2) {
             this.createWinScreen()
+            this.updateTextStatus()
+            this.updateVisibleItems(this.lights, this.VisibleItems.light)
             return
         }
     
@@ -107,7 +110,6 @@ class StatusPanel {
     
     createWinScreen = () => {
         let textVictory = document.querySelector('.game__victory')
-        this.showTextStatus()
     
         if (this.VisibleItems.light === 0 && this.VisibleItems.life === 2) {
             textVictory.innerHTML = 'CONGRATULATIONS YOU WIN!'
