@@ -121,3 +121,19 @@ img {
     color: white;
 }
 
+.game__window {
+    outline: 2px solid red;
+    position: relative;
+    margin-top: 100px;
+}
+
+.skeleton {
+    outline: 2px solid red;
+    position: absolute;
+    top: -200px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    transform-origin: center;
+}

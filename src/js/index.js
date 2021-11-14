@@ -1,4 +1,5 @@
 import AbstractObserver from '../utils/abstract-observer.js'
+import { setSpritePosition } from '../utils/controls.js'
 
 class StatusPanel {
     constructor() {
@@ -13,11 +14,13 @@ class StatusPanel {
         this.life = this.game.querySelectorAll('.game__panel-life')
         this.btnLight = this.game.querySelector('.game-btn--light')
         this.btnLife = this.game.querySelector('.game-btn--life')
+        this.skeleton = this.game.querySelector('.skeleton')
     }
     
     init = () => {
         this.update()
         this.addedHandlers()
+        setSpritePosition(this.skeleton)
     }
     
     update = () => {
