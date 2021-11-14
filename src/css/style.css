@@ -54,10 +54,21 @@ img {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    margin: 100px auto;
+    margin: 150px auto 0;
     width: 490px;
     padding: 10px;
     outline: 2px solid black;
+}
+
+.game__victory {
+    position: absolute;
+    top: -30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 30px;
+    color: gold;
+    text-transform: uppercase;
 }
 
 .game__panel {
@@ -69,6 +80,10 @@ img {
     border: 5px ridge gold;
     background-image: linear-gradient(gold, black);
     border-radius: 40px;
+}
+
+.game__panel img {
+    opacity: 0;
 }
 
 .game__text-panel {
