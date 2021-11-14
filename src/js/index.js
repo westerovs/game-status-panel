@@ -1,4 +1,4 @@
-import AbstractObserver from '../utils/abstract-observer.js'
+// import AbstractObserver from '../utils/abstract-observer.js'
 import { setSpritePosition } from '../utils/controls.js'
 
 class StatusPanel {
@@ -23,7 +23,7 @@ class StatusPanel {
     init = () => {
         this.update()
         this.addedHandlers()
-        setSpritePosition(this.skeleton)
+        setSpritePosition(this.skeleton, this.game)
     }
     
     update = () => {
@@ -92,12 +92,14 @@ class StatusPanel {
         if (this.VisibleItems.light === 0 && this.VisibleItems.life === 2) {
             textVictory.innerHTML = 'CONGRATULATIONS YOU WIN!'
             textVictory.style.display = 'block'
+            document.body.classList.add('win')
             this.removeHandlers()
             return
         }
         if (this.VisibleItems.light === 0) {
             textVictory.innerHTML = 'GAME FAIL!'
             textVictory.style.display = 'block'
+            document.body.classList.add('fail')
             this.removeHandlers()
             return
         }
@@ -105,6 +107,7 @@ class StatusPanel {
             textVictory.innerHTML = 'CONGRATULATIONS YOU WIN!'
             textVictory.style.display = 'block'
             this.removeHandlers()
+            document.body.classList.add('win')
             return
         }
 
