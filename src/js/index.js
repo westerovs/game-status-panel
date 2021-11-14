@@ -33,7 +33,6 @@ class StatusPanel {
 
         this.updateVisibleItems(this.lights, this.VisibleItems.light)
         this.updateVisibleItems(this.life, this.VisibleItems.life)
-        this.showTextStatus()
         this.createWinScreen()
     }
     
@@ -97,7 +96,8 @@ class StatusPanel {
     
     createWinScreen = () => {
         let textVictory = document.querySelector('.game__victory')
-        
+        this.showTextStatus()
+    
         if (this.VisibleItems.light === 0 && this.VisibleItems.life === 2) {
             textVictory.innerHTML = 'CONGRATULATIONS YOU WIN!'
             textVictory.style.display = 'block'
