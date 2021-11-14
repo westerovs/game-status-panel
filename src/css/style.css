@@ -61,14 +61,20 @@ img {
 }
 
 .game__victory {
+    display: none;
     position: absolute;
-    top: -30%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    width: 100%;
+    padding: 10px;
     text-align: center;
     font-size: 30px;
     color: gold;
     text-transform: uppercase;
+    z-index: 99;
+    background-image: linear-gradient(rgba(255, 5, 25, 0.7), rgba(200, 0, 200, 0.7));
+    user-select: none;
 }
 
 .game__panel {
@@ -82,8 +88,15 @@ img {
     border-radius: 40px;
 }
 
+.game__panel--light {
+    justify-content: unset;
+    gap: 0 36px;
+}
+
 .game__panel img {
     opacity: 0;
+    transition: opacity 1s;
+    z-index: 1;
 }
 
 .game__text-panel {
@@ -121,3 +134,17 @@ img {
     color: white;
 }
 
+.game__window {
+    position: relative;
+    margin-top: 100px;
+}
+
+.skeleton {
+    position: absolute;
+    top: -200px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    transform-origin: center;
+}

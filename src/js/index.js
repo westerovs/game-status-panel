@@ -1,4 +1,5 @@
 import AbstractObserver from '../utils/abstract-observer.js'
+import { setSpritePosition } from '../utils/controls.js'
 
 class StatusPanel {
     constructor() {
@@ -6,18 +7,23 @@ class StatusPanel {
             light: 3,
             life: 0
         }
+        this.countLight = 2
         
         // this.observer = new AbstractObserver()
         this.game = document.querySelector('.game')
+        this.gameWindow = document.querySelector('.game__window')
         this.lights = this.game.querySelectorAll('.game__panel-light')
         this.life = this.game.querySelectorAll('.game__panel-life')
+
         this.btnLight = this.game.querySelector('.game-btn--light')
         this.btnLife = this.game.querySelector('.game-btn--life')
+        this.skeleton = this.game.querySelector('.skeleton')
     }
     
     init = () => {
         this.update()
         this.addedHandlers()
+        setSpritePosition(this.skeleton)
     }
     
     update = () => {
@@ -60,6 +66,16 @@ class StatusPanel {
     }
     
     onHandlerLightBtn = () => {
+        const light = Array.from(this.lights)[this.countLight]
+        this.countLight--
+        
+        const skeletonPosX = this.skeleton.getBoundingClientRect().x -  this.game.getBoundingClientRect().x
+        const skeletonPosY = this.skeleton.getBoundingClientRect().y -  this.game.getBoundingClientRect().y
+
+        light.style.position = 'absolute'
+        light.style.top = `${ skeletonPosY }px`
+        light.style.left = `${ skeletonPosX }px`
+
         this.VisibleItems.light--
         this.VisibleItems.life--
         this.update()
@@ -75,16 +91,19 @@ class StatusPanel {
         
         if (this.VisibleItems.light === 0 && this.VisibleItems.life === 2) {
             textVictory.innerHTML = 'CONGRATULATIONS YOU WIN!'
+            textVictory.style.display = 'block'
             this.removeHandlers()
             return
         }
         if (this.VisibleItems.light === 0) {
             textVictory.innerHTML = 'GAME FAIL!'
+            textVictory.style.display = 'block'
             this.removeHandlers()
             return
         }
         if (this.VisibleItems.life === 3) {
             textVictory.innerHTML = 'CONGRATULATIONS YOU WIN!'
+            textVictory.style.display = 'block'
             this.removeHandlers()
             return
         }
