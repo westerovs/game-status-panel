@@ -79,6 +79,30 @@ img {
     user-select: none;
 }
 
+.game__over {
+    display: none;
+    position: absolute;
+    top: 180px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    padding: 10px 20px;
+    width: 150px;
+    height: 70px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px black;
+    z-index: 99;
+    font-size: 20px;
+    cursor: pointer;
+
+    color: red;
+    animation-name: scale;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+}
+
 .game__panel {
     display: flex;
     justify-content: space-around;
@@ -158,12 +182,10 @@ img {
 
 .win {
     background-image: linear-gradient(gold, skyblue, gold);
-    pointer-events: none;
 }
 
 .fail {
     background-image: linear-gradient(10deg, black, tomato);
-    pointer-events: none;
 }
 
 .game__controls {

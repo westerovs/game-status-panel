@@ -9,14 +9,13 @@ class StatusPanel {
         }
         this.countLight = 2
         
-        // this.observer = new AbstractObserver()
         this.game = document.querySelector('.game')
-        this.gameWindow = document.querySelector('.game__window')
         this.lights = this.game.querySelectorAll('.game__panel-light')
         this.life = this.game.querySelectorAll('.game__panel-life')
 
         this.btnLight = this.game.querySelector('.game-btn--light')
         this.btnLife = this.game.querySelector('.game-btn--life')
+        this.btnGameOver = this.game.querySelector('.game__over')
         this.skeleton = this.game.querySelector('.skeleton')
     }
     
@@ -36,7 +35,12 @@ class StatusPanel {
         this.createWinScreen()
     }
     
+    restartGame = () => {
+        window.location.reload()
+    }
+    
     addedHandlers = () => {
+        this.btnGameOver.addEventListener('click', this.restartGame)
         this.btnLight.addEventListener('click', this.onHandlerLightBtn)
         this.btnLife.addEventListener('click', this.onHandlerLifeBtn)
     }
@@ -108,6 +112,7 @@ class StatusPanel {
         if (this.VisibleItems.light === 0 && this.VisibleItems.life === 2) {
             textVictory.innerHTML = 'CONGRATULATIONS YOU WIN!'
             textVictory.style.display = 'block'
+            this.btnGameOver.style.display = 'block'
             document.body.classList.add('win')
             this.removeHandlers()
             return
@@ -115,12 +120,14 @@ class StatusPanel {
         if (this.VisibleItems.light === 0) {
             textVictory.innerHTML = 'GAME FAIL!'
             textVictory.style.display = 'block'
+            this.btnGameOver.style.display = 'block'
             document.body.classList.add('fail')
             this.removeHandlers()
             return
         }
         if (this.VisibleItems.life === 3) {
             textVictory.innerHTML = 'CONGRATULATIONS YOU WIN!'
+            this.btnGameOver.style.display = 'block'
             textVictory.style.display = 'block'
             this.removeHandlers()
             document.body.classList.add('win')
