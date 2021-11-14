@@ -1,4 +1,4 @@
-# template game status panel
+# Template game status panel
 🟢RUN:<br>
 https://westerovs.github.io/game-status-panel/
 <br>
