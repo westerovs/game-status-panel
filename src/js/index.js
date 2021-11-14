@@ -1,12 +1,15 @@
 class StatusPanel {
     constructor() {
         this.VisibleItems = {
-            lights: 2,
+            lights: 3,
             life: 2
         }
     
-        this.lights = document.querySelectorAll('.game__panel-light')
-        this.life = document.querySelectorAll('.panel__life')
+        this.game = document.querySelector('.game')
+        this.lights = this.game.querySelectorAll('.game__panel-light')
+        this.life = this.game.querySelectorAll('.panel__life')
+        this.btnLight = this.game.querySelector('.game-btn--light')
+        this.btnLife = this.game.querySelector('.game-btn--life')
     }
     
     
@@ -21,13 +24,13 @@ class StatusPanel {
     
     
     updateVisibleItems = (element, typeIndex) => {
-        Array.from(element)
-          .reverse()
-          .forEach((item, index) => {
-              if (index < typeIndex) {
-                  item.style.opacity = 0
-              }
-          })
+        // Array.from(element)
+          // .reverse()
+          // .forEach((item, index) => {
+          //     if (index < typeIndex) {
+          //         item.style.opacity = 0
+          //     }
+          // })
     }
     
     

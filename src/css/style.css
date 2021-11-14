@@ -53,8 +53,11 @@ img {
     position: relative;
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
     margin: 100px auto;
     width: 490px;
+    padding: 10px;
+    outline: 2px solid black;
 }
 
 .game__panel {
@@ -71,13 +74,35 @@ img {
 .game__text-panel {
     position: absolute;
     top: -40px;
+    left: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: inherit;
+    padding: inherit;
     font-size: 20px;
 }
 
 .game__text-panel span {
     color: red;
 }
+
+.game__row {
+    display: flex;
+    flex-direction: column;
+    gap: 10px 0;
+    width: 200px;
+    padding: 10px;
+}
+
+.game__btn {
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.game__row button:hover {
+    background-image: linear-gradient(tomato, black);
+    color: white;
+}
+
